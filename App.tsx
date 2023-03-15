@@ -1,7 +1,15 @@
+import { useState  } from 'react';
 import { StatusBar } from 'react-native';
-import { StyleSheet,Alert,  View,  FlatList , TouchableOpacity , Text, Image, ActivityIndicator} from 'react-native';
-import { useState } from 'react';
+import { ImageComponent } from './src/components/ImageComponent';
+import { EmptyComponent } from './src/components/EmptyComponent';
 import * as ImagePicker from 'expo-image-picker';
+import { StyleSheet, 
+  Alert, 
+  View,  
+  FlatList , 
+  TouchableOpacity , 
+  Text, 
+  ActivityIndicator} from 'react-native';
 
 
 type ImageListProps = Array<{
@@ -14,7 +22,8 @@ export default function App() {
   
   const [ images, setImages ] = useState<ImageListProps>([]);
   const [ isLoading, setIsLoading ] = useState(false); 
-  const [ limit, setLimit ] = useState(5)
+  const [ limit, setLimit ] = useState(6);
+
 
   const getPickedImages = async()=>{
     try{
@@ -22,7 +31,7 @@ export default function App() {
     
       let result = await ImagePicker.launchImageLibraryAsync({
        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-       // allowsEditing: true, **does not work for multiple images** 
+      //  allowsEditing: true,
        allowsMultipleSelection: true,
        selectionLimit: 5,
        aspect: [4, 3 ],
@@ -30,24 +39,22 @@ export default function App() {
       })
       
       
-      if(!result.canceled){         
+      if(!result.canceled){  
+        console.log(result)       
         for(let asset of result.assets){ 
           
-          console.log(result.assets.length)
-          console.log(images.length, 'linha39')
-          console.log( limit - (images.length + result.assets.length) , 'linha38')
-          if(result.assets.length + images.length > limit ){
+          if(result.assets.length + images.length > limit ){           
             return Alert.alert(`Total of ${limit} photos allowed`, 'Please review your selections.' )
           }
           
-          const duplicated = images.find(item => `${asset.fileName}${asset.assetId}` === item.id);
-        
+          const duplicated = images.find(item => `${asset.assetId}` === item.id);
+            
           if(duplicated){                  
-            return Alert.alert('Try again.', 'One of the images selected were duplicated');
+            return Alert.alert('Try again.', 'Duplicated image selected.');
 
           }
           
-          setImages(prevState => [ ...prevState, { id:`${asset.fileName}${asset.assetId}`, source:asset.uri }])
+          setImages(prevState => [ ...prevState, { id:`${asset.assetId}`, source:asset.uri }])
           
         }      
       }
@@ -57,12 +64,27 @@ export default function App() {
     }
   }
 
-  const handleImagePicker = async()=>{    
+  const handleImagePicker = async()=>{ 
+      
     setIsLoading(true);
     await getPickedImages();
     setIsLoading(false);
   }
 
+  const handleImageRemove =(imageId: string)=>{
+    Alert.alert("Remove image","Are you sure you want to remove this image?", [{
+      text: 'Yes',
+      onPress: ()=>proceedRemoval(imageId)
+    },{
+      text: 'No', style:"cancel"
+    }])
+    
+  }   
+    const proceedRemoval =(imageId:string)=>{
+      const updatedImages = images.filter(item => item.id !== imageId); 
+      setImages(updatedImages);
+    
+  }
 
   return (
     <View style={styles.container}>
@@ -72,22 +94,22 @@ export default function App() {
         (
           <>
         
-        <FlatList 
-      
+        <FlatList       
         showsVerticalScrollIndicator={false}
         data={images}
         keyExtractor={item => item.id}
-        renderItem={({item})=> <Image style={styles.image} source={{ uri: item.source}} />}
+        renderItem={({item})=> <ImageComponent onTrashPress={()=>handleImageRemove(item.id)} source={item.source} />}
         numColumns={2}
-        contentContainerStyle={{marginTop: 20, gap: 20, width: '100%'}}
+        contentContainerStyle={{marginTop: 20, gap: 20, alignItems: 'center', paddingBottom: 100 }}
+        ListEmptyComponent={<EmptyComponent />}
         ListHeaderComponent={
           <View>
             <TouchableOpacity 
             disabled={images.length === limit}  
             activeOpacity={0.7} 
             onPress={handleImagePicker} 
-            style={[styles.buttonContainer, {backgroundColor: images.length === limit ? '#a9a9a9' : '#3bc20b'}]}>
-              <Text style={styles.buttonText}>{images.length === limit ? 'Unable to upload more images' : `Choose up to ${limit} images`}</Text>              
+            style={[styles.buttonContainer, {backgroundColor: images.length === limit ? '#FF7779' : '#3bc20b'}]}>
+              <Text style={styles.buttonText}>{images.length === limit ? `Limit of ${limit} images reached` : `Choose up to ${limit} images`}</Text>              
             </TouchableOpacity> 
           </View>
 
@@ -115,7 +137,8 @@ const styles = StyleSheet.create({
     borderRadius: 100, 
     borderWidth:3, 
     borderColor: '#3bc20b', 
-    margin: 15 
+    margin: 15,
+ 
   },
   buttonContainer:{
     marginTop: 100, 

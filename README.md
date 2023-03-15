@@ -3,7 +3,7 @@
 
 
 
-<img src="https://ik.imagekit.io/cnbmdh4b9w/ezgif.com-optimize_66mWkU1eEe.gif?updatedAt=1678847840448" alt="Image Picker gif"/>
+<img src="https://ik.imagekit.io/cnbmdh4b9w/ezgif.com-resize_Z3dOOqUKt.gif?updatedAt=1678848397098"/>
 
 
 </div>
