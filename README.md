@@ -8,32 +8,38 @@
 
 </div>
 
+
+# Menu
+- <a href="#about">About</a>
+- <a href="#motivation">Motivation</a>
+- <a href="#technologies">Technologies</a>
+- <a href="#to-run-the-project">Run the project</a>
 # About
 
-This is an 'image picker' app which let's you upload pictures from your device into your App.
-You are initially prompted with an Empty gallery and a button for you to upload your pictures. It takes you to your gallery. 
-- There are validations to prevent uploading duplicated.
+This is an ***image picker*** app which let's you ***upload pictures*** from your ***mobile device*** into your App.<br>
+You are initially prompted with an ***Empty gallery message*** and a button for you to upload your pictures. <br/> 
+
+- There are validations to prevent uploading duplicated images.
 - You may delete images individually.
-- There is a limit of images that can be uploaded if it reaches the limit, the upload button is disabled.
-- You are prompted to an alert message for you to confirm deleting whenever you try to remove a picture. 
+- There is a ***limit*** of images that can be uploaded, and if it reaches the limit, the upload button is ***disabled***.
+- You are prompted to an ***alert*** message for you to confirm deleting whenever you try to remove a picture. 
 
 # Motivation
 
-Learn how to allow the user to select images from their device, so I can apply this feature into other apps.
-Understand and practice React Native Fundamentals.
+Learn how to allow users to ***select*** images from their ***mobile device***, so I can apply this feature into other apps.
+Understand and practice React Native Fundamentals, such as useState,and components.
 Keep committed with my goals.
 Interact with the Dev Community.
-Do research, follow documentation and deal with errors.
+Do research, read and follow documentation.
+Deal with errors.
 .</br>
-Made with 💗 by Gilmara Pimentel
 
 
 # Technologies
 
-- Expo
 - React Native
-- Expo google fonts
 - Typescript
+- Expo
 - Expo Vector icons
 - Expo-Image-Picker
 
@@ -44,8 +50,7 @@ Made with 💗 by Gilmara Pimentel
 - Run **npx expo start**
 
 # Documentation used:
-
 [Expo Image Picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
 
-
+Made with 💗 by Gilmara Pimentel
 
