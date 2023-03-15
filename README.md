@@ -18,19 +18,19 @@
 
 This is an ***image picker*** app which let's you ***upload pictures*** from your ***mobile device*** into your App.<br>
 You are initially prompted with an ***Empty gallery message*** and a button for you to upload your pictures. <br/> 
-
+- In ***ios*** it is possible to select multiple images when ```allowsMultipleSelection: true```
 - There are validations to prevent uploading duplicated images.
 - You may delete images individually.
-- There is a ***limit*** of images that can be uploaded, and if it reaches the limit, the upload button is ***disabled***.
+- There is a ***limit*** of images that can be uploaded, and if it reaches the limit, the upload button gets ***disabled***.
 - You are prompted to an ***alert*** message for you to confirm deleting whenever you try to remove a picture. 
 
 # Motivation
 
-Learn how to allow users to ***select*** images from their ***mobile device***, so I can apply this feature into other apps.
-Understand and practice React Native Fundamentals, such as useState,and components.
-Keep committed with my goals.
-Interact with the Dev Community.
-Do research, read and follow documentation.
+Learn how to allow users to ***select*** images from their ***mobile device***, so I can apply this feature into other apps.<br/>
+Understand and practice React Native Fundamentals, such as ***useState***,and ***components***. <br/>
+Keep committed with my goals.<br/>
+Interact with the Dev Community.<br/>
+Do research, read and follow documentation.<br/>
 Deal with errors.
 .</br>
 
