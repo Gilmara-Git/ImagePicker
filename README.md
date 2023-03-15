@@ -26,13 +26,13 @@ You are initially prompted with an ***Empty gallery message*** and a button for 
 
 # Motivation
 
-Learn how to allow users to ***select*** images from their ***mobile device***, so I can apply this feature into other apps.<br/>
-Understand and practice React Native Fundamentals, such as ***useState***,and ***components***. <br/>
-Keep committed with my goals.<br/>
-Interact with the Dev Community.<br/>
-Do research, read and follow documentation.<br/>
-Deal with errors.
-.</br>
+- Learn how to allow users to ***select*** images from their ***mobile device***, so I can apply this feature into other apps.
+- Understand and practice React Native Fundamentals, such as ***useState***,and ***components***. 
+- Keep committed with my goals.
+- Interact with the Dev Community.
+- Do research, read and follow documentation.
+- Deal with errors.
+
 
 
 # Technologies
